@@ -1,10 +1,10 @@
-<header *ngIf="user">
-  <nav>Navigation</nav>
+<header *ngIf="authenticationService.userValue">
+  <nav><a routerLink="account/xxx">Account</a></nav>
   <nav (click)="logout()">Log out</nav>
 </header>
 <main>
   <router-outlet></router-outlet>
 </main>
-<footer *ngIf="user">
+<footer *ngIf="authenticationService.userValue">
   <p>footer</p>
 </footer>

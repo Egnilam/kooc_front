@@ -13,10 +13,10 @@ export const jwtInterceptor: HttpInterceptorFn = (
 ): Observable<HttpEvent<unknown>> => {
   const authenticationService = inject(AuthenticationService);
 
-  if (!req.url.includes('/api/v1/login') && authenticationService.isLogged()) {
+  if (!req.url.includes('/api/v1/login') && authenticationService.userValue) {
     const clone = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${authenticationService.getToken()}`
+        Authorization: `Bearer ${authenticationService.userValue.token}`
       }
     });
 
