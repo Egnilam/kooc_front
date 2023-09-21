@@ -1,0 +1,12 @@
+<app-account *ngIf="user$ | async as user" [user]="user"></app-account>
+<ul>
+  <li>
+    <a [routerLink]="['/users', id, 'update']">Modifier profil</a>
+  </li>
+  <li>
+    <a [routerLink]="['/users', id, 'update_password']">Modifier mot de passe</a>
+  </li>
+  <li>
+    <a [routerLink]="['/users', id, 'delete']">Suppression du compte</a>
+  </li>
+</ul>

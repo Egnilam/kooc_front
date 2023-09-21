@@ -26,9 +26,6 @@ export class AuthenticationComponent {
   });
 
   constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private router: Router) {
-    if(this.authenticationService.userValue){
-      this.router.navigate([`account/${this.authenticationService.userValue.id}`]);
-    }
   }
 
   login(){
@@ -36,11 +33,15 @@ export class AuthenticationComponent {
 
     this.authenticationService.login(userLogin).subscribe({
       next: (user: IUser) => {
-        this.router.navigate([`account/${user.id}`])
+        this.redirectAfterAuthentication(user.id);
       },
       error: error => {
         this.authenticationError = error instanceof AuthenticationError ? error : null;
       }
     })
+  }
+
+  private redirectAfterAuthentication(id: string) {
+    this.router.navigate([`users/${id}`])
   }
 }

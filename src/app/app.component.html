@@ -1,5 +1,5 @@
 <header *ngIf="authenticationService.userValue">
-  <nav><a routerLink="account/xxx">Account</a></nav>
+  <nav><a [routerLink]="['/users', authenticationService.userValue.id]">Account</a></nav>
   <nav (click)="logout()">Log out</nav>
 </header>
 <main>
